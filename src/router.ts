@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 
 const router = express.Router();
 
-router.post("/", (req: Request, res: Response) => {
+router.post("/", (_req: Request, res: Response) => {
   try {
     res.status(200).json({ message: "success!!" });
   } catch {
