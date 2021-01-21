@@ -1,12 +1,13 @@
 import express from "express";
+import allowCrossDomain from "./allowCrossOrigin";
 import router from "./router";
+import staticPageServer from "./staticPageServer";
 
 const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(allowCrossDomain);
 app.use(router);
+app.listen(8080);
 
-const port = process.env.PORT || 8080;
-
-app.listen(port);
+const staticPage = express();
+staticPage.use(staticPageServer);
+staticPage.listen(8081);
